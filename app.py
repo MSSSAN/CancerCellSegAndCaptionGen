@@ -108,20 +108,24 @@ st.markdown("""
         text-align: center;
     }
             
-    [data-testid="stSidebar"] {
+    section[data-testid="stSidebar"] {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
         height: 100vh !important;
-        overflow-y: scroll !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
     }
     
-    [data-testid="stSidebar"] > div {
-        height: 100vh !important;
-        overflow-y: scroll !important;
+    /* Remove nested scrollbars */
+    section[data-testid="stSidebar"] > div {
+        overflow: visible !important;
+        height: auto !important;
     }
     
-    [data-testid="stSidebarContent"] {
-        height: 100vh !important;
-        overflow-y: scroll !important;
-    }
+    section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
+        overflow: visible !important;
+    }            
 </style>
 """, unsafe_allow_html=True)
 
