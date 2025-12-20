@@ -542,7 +542,15 @@ def load_all_models(seg_model1_path, seg_model2_path, vocab_path, encoder_path, 
 
 def main():
     import pandas as pd
-    
+
+    # Hardcoded paths (no UI needed on HF)
+    seg_model1_path = "model/best_seg_BR_cell.pt"
+    seg_model2_path = "model/best_seg_BR_class.pt"
+    vocab_path = "vocab.pkl"
+    encoder_path = "encoder_4ch.pth"
+    projection_path = "projection.pth"
+    decoder_path = "decoder.pth"
+
     # Initialize session state
     if 'segmentation_result' not in st.session_state:
         st.session_state.segmentation_result = None
@@ -563,21 +571,21 @@ def main():
     with st.sidebar:
         st.header("⚙️ Configuration")
         
-        st.subheader("Segmentation Models")
-        seg_model1_path = st.text_input(
-            "HoVerNet (Cell Segmentation)",
-            value="model/best_seg_BR_cell.pt"
-        )
-        seg_model2_path = st.text_input(
-            "U-Net (Tissue Classification)",
-            value="model/best_seg_BR_class.pt"
-        )
+        # st.subheader("Segmentation Models")
+        # seg_model1_path = st.text_input(
+        #     "HoVerNet (Cell Segmentation)",
+        #     value="model/best_seg_BR_cell.pt"
+        # )
+        # seg_model2_path = st.text_input(
+        #     "U-Net (Tissue Classification)",
+        #     value="model/best_seg_BR_class.pt"
+        # )
         
-        st.subheader("Caption Models (RGB + Seg)")
-        vocab_path = st.text_input("Vocabulary File", value="vocab.pkl")
-        encoder_path = st.text_input("Caption Encoder (4-ch)", value="encoder_4ch.pth")
-        projection_path = st.text_input("Projection Layer", value="projection.pth")
-        decoder_path = st.text_input("Caption Decoder", value="decoder.pth")
+        # st.subheader("Caption Models (RGB + Seg)")
+        # vocab_path = st.text_input("Vocabulary File", value="vocab.pkl")
+        # encoder_path = st.text_input("Caption Encoder (4-ch)", value="encoder_4ch.pth")
+        # projection_path = st.text_input("Projection Layer", value="projection.pth")
+        # decoder_path = st.text_input("Caption Decoder", value="decoder.pth")
         
         st.markdown("---")
         
