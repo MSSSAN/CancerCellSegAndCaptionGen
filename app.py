@@ -65,41 +65,66 @@ st.set_page_config(
 # Custom CSS
 st.markdown("""
 <style>
-    /* Force the app container to stay at screen height and not grow with images */
-    [data-testid="stAppViewContainer"] {
-        height: 100vh !important;
-        overflow: hidden !important;
+    .main-header {
+        font-size: 3rem;
+        font-weight: bold;
+        text-align: center;
+        color: #1f77b4;
+        margin-bottom: 1rem;
     }
-
-    /* Make the Sidebar a separate scrolling column that stays fixed */
-    [data-testid="stSidebar"] {
-        height: 100vh !important;
-        overflow-y: auto !important;
-        position: relative !important;
+    .sub-header {
+        font-size: 1.5rem;
+        text-align: center;
+        color: #555;
+        margin-bottom: 2rem;
     }
-
-    /* Make the Main Content area its own independent scrolling window */
-    [data-testid="stMainViewContainer"] {
+    .result-box {
+        background-color: #f0f8ff;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        border-left: 5px solid #1f77b4;
+        margin: 1rem 0;
+    }
+    .seg-box {
+        background-color: #f0fff0;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        border-left: 5px solid #28a745;
+        margin: 1rem 0;
+    }
+    .step-indicator {
+        background-color: #fff3cd;
+        padding: 0.5rem;
+        border-radius: 0.3rem;
+        margin: 0.5rem 0;
+        text-align: center;
+        font-weight: bold;
+    }
+    .metric-card {
+        background-color: #ffffff;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+            
+    section[data-testid="stSidebar"] {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
         height: 100vh !important;
         overflow-y: auto !important;
         overflow-x: hidden !important;
     }
 
-    /* Custom Styling for your UI Boxes */
-    .main-header { font-size: 2rem; color: #1f77b4; text-align: center; font-weight: bold; }
-    .result-box { background-color: #f0f8ff; padding: 1.5rem; border-radius: 8px; border-left: 5px solid #1f77b4; margin: 10px 0; }
-    .seg-box { background-color: #f0fff0; padding: 1.5rem; border-radius: 8px; border-left: 5px solid #28a745; margin: 10px 0; }
-    
-    /* Ensure scrollbars are always visible so the user knows they can scroll */
-    ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
+    section[data-testid="stSidebar"] > div {
+        overflow: visible !important;
+        height: auto !important;
     }
-    ::-webkit-scrollbar-thumb {
-        background: #888;
-        border-radius: 10px;
+
+    section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
+        overflow: visible !important;
     }
-</style>
 """, unsafe_allow_html=True)
 
 # Configuration
