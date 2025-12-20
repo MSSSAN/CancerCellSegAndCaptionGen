@@ -107,17 +107,6 @@ st.markdown("""
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         text-align: center;
     }
-            
-    section[data-testid="stSidebar"] {
-        position: fixed !important;
-        height: 100vh !important;
-        overflow-y: scroll !important;
-        overflow-x: hidden !important;
-    }
-    
-    section[data-testid="stSidebar"] > div:first-child {
-        overflow: visible !important;
-    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -543,6 +532,17 @@ def load_all_models(seg_model1_path, seg_model2_path, vocab_path, encoder_path, 
 # ============================================================================
 
 def main():
+
+    st.markdown("""
+    <style>
+    section[data-testid="stSidebar"] {
+        position: fixed !important;
+        height: 100vh !important;
+        overflow-y: scroll !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
     import pandas as pd
 
     # Hardcoded paths (no UI needed on HF)
