@@ -36,15 +36,23 @@ import segmentation_models_pytorch as smp
 from torchvision.transforms import ToTensor
 
 # Download NLTK data
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    nltk.download('punkt', quiet=True)
+# try:
+#     nltk.data.find('tokenizers/punkt')
+# except LookupError:
+#     nltk.download('punkt', quiet=True)
     
-try:
-    nltk.data.find('tokenizers/punkt_tab')
-except LookupError:
+# try:
+#     nltk.data.find('tokenizers/punkt_tab')
+# except LookupError:
+#     nltk.download('punkt_tab', quiet=True)
+
+import os
+nltk_data_path = os.path.expanduser('~/nltk_data')
+if not os.path.exists(os.path.join(nltk_data_path, 'tokenizers/punkt')):
+    nltk.download('punkt', quiet=True)
+if not os.path.exists(os.path.join(nltk_data_path, 'tokenizers/punkt_tab')):
     nltk.download('punkt_tab', quiet=True)
+
 
 # Page config
 st.set_page_config(
@@ -98,6 +106,21 @@ st.markdown("""
         border-radius: 0.5rem;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         text-align: center;
+    }
+            
+    [data-testid="stSidebar"] {
+        height: 100vh !important;
+        overflow-y: scroll !important;
+    }
+    
+    [data-testid="stSidebar"] > div {
+        height: 100vh !important;
+        overflow-y: scroll !important;
+    }
+    
+    [data-testid="stSidebarContent"] {
+        height: 100vh !important;
+        overflow-y: scroll !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -525,7 +548,15 @@ def load_all_models(seg_model1_path, seg_model2_path, vocab_path, encoder_path, 
 
 def main():
     import pandas as pd
-    
+
+    # Hardcoded paths (no UI needed on HF)
+    seg_model1_path = "model/best_seg_BR_cell.pt"
+    seg_model2_path = "model/best_seg_BR_class.pt"
+    vocab_path = "vocab.pkl"
+    encoder_path = "encoder_4ch.pth"
+    projection_path = "projection.pth"
+    decoder_path = "decoder.pth"
+
     # Initialize session state
     if 'segmentation_result' not in st.session_state:
         st.session_state.segmentation_result = None
@@ -546,21 +577,21 @@ def main():
     with st.sidebar:
         st.header("⚙️ Configuration")
         
-        st.subheader("Segmentation Models")
-        seg_model1_path = st.text_input(
-            "HoVerNet (Cell Segmentation)",
-            value="model/best_seg_BR_cell.pt"
-        )
-        seg_model2_path = st.text_input(
-            "U-Net (Tissue Classification)",
-            value="model/best_seg_BR_class.pt"
-        )
+        # st.subheader("Segmentation Models")
+        # seg_model1_path = st.text_input(
+        #     "HoVerNet (Cell Segmentation)",
+        #     value="model/best_seg_BR_cell.pt"
+        # )
+        # seg_model2_path = st.text_input(
+        #     "U-Net (Tissue Classification)",
+        #     value="model/best_seg_BR_class.pt"
+        # )
         
-        st.subheader("Caption Models (RGB + Seg)")
-        vocab_path = st.text_input("Vocabulary File", value="vocab.pkl")
-        encoder_path = st.text_input("Caption Encoder (4-ch)", value="encoder_4ch.pth")
-        projection_path = st.text_input("Projection Layer", value="projection.pth")
-        decoder_path = st.text_input("Caption Decoder", value="decoder.pth")
+        # st.subheader("Caption Models (RGB + Seg)")
+        # vocab_path = st.text_input("Vocabulary File", value="vocab.pkl")
+        # encoder_path = st.text_input("Caption Encoder (4-ch)", value="encoder_4ch.pth")
+        # projection_path = st.text_input("Projection Layer", value="projection.pth")
+        # decoder_path = st.text_input("Caption Decoder", value="decoder.pth")
         
         st.markdown("---")
         
@@ -645,7 +676,7 @@ def main():
         st.subheader("📷 Original Image")
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
-            st.image(image, caption=f"Uploaded: {uploaded_file.name}", width="stretch")
+            st.image(image, caption=f"Uploaded: {uploaded_file.name}")
         
         # Image info
         st.markdown("---")
@@ -664,7 +695,7 @@ def main():
         # Process button
         st.markdown("---")
         
-        if st.button("🚀 Run Complete Analysis", type="primary", width="stretch"):
+        if st.button("🚀 Run Complete Analysis", type="primary"):
             progress_bar = st.progress(0)
             status_text = st.empty()
             
@@ -762,11 +793,11 @@ def main():
                 col1, col2 = st.columns(2)
                 
                 with col1:
-                    st.image(original_array, caption='Original Image', width="stretch")
+                    st.image(original_array, caption='Original Image')
                 
                 with col2:
                     caption_img = f'Overlay (α={alpha_value:.1f})' if show_mask_overlay else 'Original'
-                    st.image(overlay_array, caption=caption_img, width="stretch")
+                    st.image(overlay_array, caption=caption_img)
                 
                 st.markdown("""
                 <div style="text-align: center; margin-top: 1rem;">
