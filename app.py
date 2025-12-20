@@ -109,12 +109,18 @@ st.markdown("""
     }
             
     [data-testid="stSidebar"] {
-        overflow-y: auto !important;
-        max-height: 100vh !important;
+        height: 100vh !important;
+        overflow-y: scroll !important;
     }
     
-    [data-testid="stSidebar"] > div:first-child {
-        overflow-y: auto !important;
+    [data-testid="stSidebar"] > div {
+        height: 100vh !important;
+        overflow-y: scroll !important;
+    }
+    
+    [data-testid="stSidebarContent"] {
+        height: 100vh !important;
+        overflow-y: scroll !important;
     }
 </style>
 """, unsafe_allow_html=True)
