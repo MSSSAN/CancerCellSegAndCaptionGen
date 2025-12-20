@@ -36,15 +36,23 @@ import segmentation_models_pytorch as smp
 from torchvision.transforms import ToTensor
 
 # Download NLTK data
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    nltk.download('punkt', quiet=True)
+# try:
+#     nltk.data.find('tokenizers/punkt')
+# except LookupError:
+#     nltk.download('punkt', quiet=True)
     
-try:
-    nltk.data.find('tokenizers/punkt_tab')
-except LookupError:
+# try:
+#     nltk.data.find('tokenizers/punkt_tab')
+# except LookupError:
+#     nltk.download('punkt_tab', quiet=True)
+
+import os
+nltk_data_path = os.path.expanduser('~/nltk_data')
+if not os.path.exists(os.path.join(nltk_data_path, 'tokenizers/punkt')):
+    nltk.download('punkt', quiet=True)
+if not os.path.exists(os.path.join(nltk_data_path, 'tokenizers/punkt_tab')):
     nltk.download('punkt_tab', quiet=True)
+
 
 # Page config
 st.set_page_config(
@@ -98,6 +106,15 @@ st.markdown("""
         border-radius: 0.5rem;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         text-align: center;
+    }
+            
+    [data-testid="stSidebar"] {
+        overflow-y: auto !important;
+        max-height: 100vh !important;
+    }
+    
+    [data-testid="stSidebar"] > div:first-child {
+        overflow-y: auto !important;
     }
 </style>
 """, unsafe_allow_html=True)
