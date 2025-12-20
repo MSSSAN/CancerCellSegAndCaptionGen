@@ -664,7 +664,7 @@ def main():
         # Process button
         st.markdown("---")
         
-        if st.button("🚀 Run Complete Analysis", type="primary", use_column_width=True):
+        if st.button("🚀 Run Complete Analysis", type="primary", use_container_width=True):
             progress_bar = st.progress(0)
             status_text = st.empty()
             
