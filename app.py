@@ -645,7 +645,7 @@ def main():
         st.subheader("📷 Original Image")
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
-            st.image(image, caption=f"Uploaded: {uploaded_file.name}", use_column_width=True)
+            st.image(image, caption=f"Uploaded: {uploaded_file.name}")
         
         # Image info
         st.markdown("---")
@@ -664,7 +664,7 @@ def main():
         # Process button
         st.markdown("---")
         
-        if st.button("🚀 Run Complete Analysis", type="primary", use_container_width=True):
+        if st.button("🚀 Run Complete Analysis", type="primary"):
             progress_bar = st.progress(0)
             status_text = st.empty()
             
@@ -762,11 +762,11 @@ def main():
                 col1, col2 = st.columns(2)
                 
                 with col1:
-                    st.image(original_array, caption='Original Image', use_column_width=True)
+                    st.image(original_array, caption='Original Image')
                 
                 with col2:
                     caption_img = f'Overlay (α={alpha_value:.1f})' if show_mask_overlay else 'Original'
-                    st.image(overlay_array, caption=caption_img, use_column_width=True)
+                    st.image(overlay_array, caption=caption_img)
                 
                 st.markdown("""
                 <div style="text-align: center; margin-top: 1rem;">
