@@ -65,36 +65,39 @@ st.set_page_config(
 # Custom CSS
 st.markdown("""
 <style>
-    /* 1. Lock the outer container to the screen height to stop HF from expanding the iframe */
-    [data-testid="stAppViewContainer"] {
+    /* 1. Pin the sidebar so it stays in place while the page scrolls */
+    [data-testid="stSidebar"] {
+        position: fixed !important;
         height: 100vh !important;
-        overflow: hidden !important;
+        z-index: 999;
     }
 
-    /* 2. Force the Main Content area to be the only scrollable element */
-    [data-testid="stMainViewContainer"] {
+    /* 2. Adjust the main content so it doesn't hide behind the fixed sidebar on Desktop */
+    @media (min-width: 768px) {
+        [data-testid="stMainViewContainer"] {
+            margin-left: 21rem; /* Standard Streamlit sidebar width */
+            width: calc(100% - 21rem) !important;
+        }
+    }
+
+    /* 3. Ensure the sidebar content itself is scrollable if it gets too long */
+    [data-testid="stSidebarUserContent"] {
         height: 100vh !important;
         overflow-y: auto !important;
     }
 
-    /* 3. Keep the Sidebar fixed and independent */
-    [data-testid="stSidebar"] {
-        height: 100vh !important;
-        position: relative !important;
-    }
-
-    /* 4. Fix for the "disappearing scroll" during inference */
-    /* This ensures that even when Streamlit adds its 'running' overlays, the scroll context remains */
+    /* 4. Remove the height constraints that cause the "locking" after upload */
     .stApp {
-        position: fixed;
-        width: 100%;
+        height: auto !important;
+        overflow: visible !important;
     }
 
-    /* Your custom component styling */
+    /* Keep your existing UI element styling below */
     .main-header { font-size: 2.5rem; font-weight: bold; text-align: center; color: #1f77b4; }
     .result-box { background-color: #f0f8ff; padding: 1.5rem; border-radius: 0.5rem; border-left: 5px solid #1f77b4; margin: 1rem 0; }
     .seg-box { background-color: #f0fff0; padding: 1.5rem; border-radius: 0.5rem; border-left: 5px solid #28a745; margin: 1rem 0; }
     .metric-card { background-color: #ffffff; padding: 1rem; border-radius: 0.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center; }
+    .step-indicator { background-color: #fff3cd; padding: 0.5rem; border-radius: 0.3rem; margin: 0.5rem 0; text-align: center; font-weight: bold; }
 </style>
 """, unsafe_allow_html=True)
 
