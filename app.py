@@ -65,15 +65,35 @@ st.set_page_config(
 # Custom CSS
 st.markdown("""
 <style>
+/* 1. Force the App container to only take the browser viewport height */
+    .stApp {
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    /* 2. Make the main content area scrollable independently */
+    .main {
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    /* 3. Fix the Sidebar in place and give it its own scrollbar */
+    section[data-testid="stSidebar"] {
+        position: fixed !important;
+        height: 100vh !important;
+        overflow-y: auto !important;
+    }
+
+    /* Styling for your custom elements (kept from your original) */
     .main-header {
-        font-size: 3rem;
+        font-size: 2.5rem;
         font-weight: bold;
         text-align: center;
         color: #1f77b4;
         margin-bottom: 1rem;
     }
     .sub-header {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         text-align: center;
         color: #555;
         margin-bottom: 2rem;
@@ -92,6 +112,13 @@ st.markdown("""
         border-left: 5px solid #28a745;
         margin: 1rem 0;
     }
+    .metric-card {
+        background-color: #ffffff;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        text-align: center;
+    }
     .step-indicator {
         background-color: #fff3cd;
         padding: 0.5rem;
@@ -100,32 +127,6 @@ st.markdown("""
         text-align: center;
         font-weight: bold;
     }
-    .metric-card {
-        background-color: #ffffff;
-        padding: 1rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        text-align: center;
-    }
-            
-    section[data-testid="stSidebar"] {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        height: 100vh !important;
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
-    }
-    
-    /* Remove nested scrollbars */
-    section[data-testid="stSidebar"] > div {
-        overflow: visible !important;
-        height: auto !important;
-    }
-    
-    section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
-        overflow: visible !important;
-    }            
 </style>
 """, unsafe_allow_html=True)
 
