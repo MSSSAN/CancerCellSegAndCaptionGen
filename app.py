@@ -65,39 +65,40 @@ st.set_page_config(
 # Custom CSS
 st.markdown("""
 <style>
-    /* 1. Pin the sidebar so it stays in place while the page scrolls */
-    [data-testid="stSidebar"] {
-        position: fixed !important;
+    /* Force the app container to stay at screen height and not grow with images */
+    [data-testid="stAppViewContainer"] {
         height: 100vh !important;
-        z-index: 999;
+        overflow: hidden !important;
     }
 
-    /* 2. Adjust the main content so it doesn't hide behind the fixed sidebar on Desktop */
-    @media (min-width: 768px) {
-        [data-testid="stMainViewContainer"] {
-            margin-left: 21rem; /* Standard Streamlit sidebar width */
-            width: calc(100% - 21rem) !important;
-        }
-    }
-
-    /* 3. Ensure the sidebar content itself is scrollable if it gets too long */
-    [data-testid="stSidebarUserContent"] {
+    /* Make the Sidebar a separate scrolling column that stays fixed */
+    [data-testid="stSidebar"] {
         height: 100vh !important;
         overflow-y: auto !important;
+        position: relative !important;
     }
 
-    /* 4. Remove the height constraints that cause the "locking" after upload */
-    .stApp {
-        height: auto !important;
-        overflow: visible !important;
+    /* Make the Main Content area its own independent scrolling window */
+    [data-testid="stMainViewContainer"] {
+        height: 100vh !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
     }
 
-    /* Keep your existing UI element styling below */
-    .main-header { font-size: 2.5rem; font-weight: bold; text-align: center; color: #1f77b4; }
-    .result-box { background-color: #f0f8ff; padding: 1.5rem; border-radius: 0.5rem; border-left: 5px solid #1f77b4; margin: 1rem 0; }
-    .seg-box { background-color: #f0fff0; padding: 1.5rem; border-radius: 0.5rem; border-left: 5px solid #28a745; margin: 1rem 0; }
-    .metric-card { background-color: #ffffff; padding: 1rem; border-radius: 0.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center; }
-    .step-indicator { background-color: #fff3cd; padding: 0.5rem; border-radius: 0.3rem; margin: 0.5rem 0; text-align: center; font-weight: bold; }
+    /* Custom Styling for your UI Boxes */
+    .main-header { font-size: 2rem; color: #1f77b4; text-align: center; font-weight: bold; }
+    .result-box { background-color: #f0f8ff; padding: 1.5rem; border-radius: 8px; border-left: 5px solid #1f77b4; margin: 10px 0; }
+    .seg-box { background-color: #f0fff0; padding: 1.5rem; border-radius: 8px; border-left: 5px solid #28a745; margin: 10px 0; }
+    
+    /* Ensure scrollbars are always visible so the user knows they can scroll */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+    }
 </style>
 """, unsafe_allow_html=True)
 
