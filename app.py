@@ -114,13 +114,13 @@ st.markdown("""
     }
     
     [data-testid="stSidebar"] > div {
-        height: 100vh !important;
-        overflow-y: scroll !important;
+        overflow-y: visible !important;
+        height: auto !important;
     }
     
     [data-testid="stSidebarContent"] {
-        height: 100vh !important;
-        overflow-y: scroll !important;
+        overflow-y: visible !important;
+        height: auto !important;
     }
 </style>
 """, unsafe_allow_html=True)
