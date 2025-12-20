@@ -108,19 +108,15 @@ st.markdown("""
         text-align: center;
     }
             
-    [data-testid="stSidebar"] {
+    section[data-testid="stSidebar"] {
+        position: fixed !important;
         height: 100vh !important;
         overflow-y: scroll !important;
+        overflow-x: hidden !important;
     }
     
-    [data-testid="stSidebar"] > div {
-        overflow-y: visible !important;
-        height: auto !important;
-    }
-    
-    [data-testid="stSidebarContent"] {
-        overflow-y: visible !important;
-        height: auto !important;
+    section[data-testid="stSidebar"] > div:first-child {
+        overflow: visible !important;
     }
 </style>
 """, unsafe_allow_html=True)
