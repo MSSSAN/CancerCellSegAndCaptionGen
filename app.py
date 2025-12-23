@@ -108,20 +108,24 @@ st.markdown("""
         text-align: center;
     }
             
-    [data-testid="stSidebar"] {
-        height: 100vh !important;
-        overflow-y: scroll !important;
-    }
-    
-    [data-testid="stSidebar"] > div {
-        height: 100vh !important;
-        overflow-y: scroll !important;
-    }
-    
-    [data-testid="stSidebarContent"] {
-        height: 100vh !important;
-        overflow-y: scroll !important;
-    }
+            
+    "[data-testid='stSidebar'] {" 
+    "position: fixed;" 
+    "height: 100vh !important;" 
+    "}"
+
+    "[data-testid='stSidebarContent'] {" 
+    "height: 100vh !important;" 
+    "overflow-y: auto !important;" 
+    "flex-direction: column;" 
+    "}"
+
+    "section.main {" 
+    "overflow-y: auto !important;" 
+    "height: 100vh !important;" 
+    "}" # Closes the main section rule.
+
+
 </style>
 """, unsafe_allow_html=True)
 
