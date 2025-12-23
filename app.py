@@ -111,12 +111,13 @@ st.markdown("""
             
     "[data-testid='stSidebar'] {" 
     "position: fixed;" 
-    "height: 100vh !important;" 
+    "height: 100vh !important;"
+    overflow-y: scroll !important; 
     "}"
 
     "[data-testid='stSidebarContent'] {" 
     "height: 100vh !important;" 
-    "overflow-y: auto !important;" 
+    "overflow-y: scroll !important;" 
     "flex-direction: column;" 
     "}"
 
@@ -124,6 +125,8 @@ st.markdown("""
     "overflow-y: auto !important;" 
     "height: 100vh !important;" 
     "}" # Closes the main section rule.
+
+
 
 
 </style>
