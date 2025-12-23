@@ -108,23 +108,21 @@ st.markdown("""
         text-align: center;
     }
             
-    section[data-testid="stSidebar"] {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
+    [data-testid="stSidebar"] {
         height: 100vh !important;
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
+        overflow-y: scroll !important;
     }
-
-    section[data-testid="stSidebar"] > div {
-        overflow: visible !important;
-        height: auto !important;
+    
+    [data-testid="stSidebar"] > div {
+        height: 100vh !important;
+        overflow-y: scroll !important;
     }
-
-    section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
-        overflow: visible !important;
+    
+    [data-testid="stSidebarContent"] {
+        height: 100vh !important;
+        overflow-y: scroll !important;
     }
+</style>
 """, unsafe_allow_html=True)
 
 # Configuration
@@ -900,3 +898,6 @@ Statistics:
 
 if __name__ == "__main__":
     main()
+
+
+#####
