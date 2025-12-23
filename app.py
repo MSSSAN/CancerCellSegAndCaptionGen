@@ -111,7 +111,7 @@ st.markdown("""
             
     [data-testid="stSidebar"] {
         height: 100vh !important;
-        overflow-y: scroll !important;
+        overflow-y: hidden !important;
     }
     
     [data-testid="stSidebarContent"] {
