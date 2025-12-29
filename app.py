@@ -655,6 +655,8 @@ def main():
         if torch.cuda.is_available():
             st.write(f"**GPU:** {torch.cuda.get_device_name(0)}")
 
+        st.markdown("---")
+        st.markdown("<h3 style='font-size: 1.15rem;'>Streamlit page made by <br> Son, Hyuk Jae</h3>", unsafe_allow_html=True)
 
         
     # Model loading logic
@@ -671,6 +673,11 @@ def main():
     st.markdown("---")
     st.header("📤 Upload Pathology Image")
     uploaded_file = st.file_uploader("Choose image", type=['png', 'jpg', 'jpeg'])
+    st.markdown("""
+                <div style="text-align: center; margin-top: 0.5rem; font-size: 0.9rem;">
+📥 Google drive link for test images: <a href="https://drive.google.com/drive/folders/1Fw4d6-QMPjcXvQkAPhJYpePAl5X9jHzZ?usp=drive_link" target="_blank">Download here</a>
+</div>
+""", unsafe_allow_html=True)
     
     if uploaded_file is not None:
         image = Image.open(uploaded_file).convert('RGB')
