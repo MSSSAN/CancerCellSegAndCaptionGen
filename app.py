@@ -119,7 +119,46 @@ st.markdown("""
         overflow-y: scroll !important;
     }
 
+            
 
+
+                
+        /* targets columns nested inside the 'image-section-fence' */
+    .image-section-fence [data-testid="column"] {
+        aspect-ratio: 1 / 1 !important;        /* Keeps image area square */
+        display: flex !important;              /* Enables alignment control */
+        flex-direction: column !important;     /* Stacks image and caption vertically */
+        min-height: 250px !important;          /* Prevents collapse if width calculation lags */
+    }
+
+    /* Ensures Streamlit image wrapper fills the square */
+    .image-section-fence [data-testid="stImage"] {
+        height: 100% !important;
+        width: 100% !important;
+    }
+
+    /* Ensures actual image pixels fill the wrapper without distortion */
+    .image-section-fence [data-testid="stImage"] img {
+        object-fit: contain !important;
+        height: 100% !important;
+        width: 100% !important;
+    }
+
+                
+    /* Prevent auto-scroll when fragment reruns */
+    [data-testid="stSidebar"] input[type="checkbox"]:focus {
+        scroll-margin: 0 !important;
+    }
+
+    [data-testid="stVerticalBlock"] {
+        scroll-margin-top: 0 !important;
+    }
+
+    /* Stabilize fragment container specifically */
+    .image-section-fence {
+        scroll-margin-top: 0 !important;
+        scroll-margin-bottom: 0 !important;
+    }
 
 
 </style>
@@ -556,7 +595,32 @@ def render_visualization_fragment(image, segmentation, show_mask_overlay):
     # If it's the first run, we provide a default of 0.5.
     current_alpha = st.session_state.get("mask_slider_key", 0.5)
 
-    # 2. Generate and Display the Images using the stable value
+    # # 2. Generate and Display the Images using the stable value
+    # original_array, overlay_array = create_overlay_image(
+    #     image, 
+    #     segmentation, 
+    #     show_mask=show_mask_overlay,
+    #     alpha=current_alpha
+    # )
+    
+    # col1, col2 = st.columns(2)
+    # with col1:
+    #     st.image(original_array, caption='Original Image', width='stretch')
+    
+    # with col2:
+    #     caption_img = f'Overlay (α={current_alpha:.1f})' if show_mask_overlay else 'Original'
+    #     st.image(overlay_array, caption=caption_img, width='stretch')
+
+
+
+    # 2. Pre-create containers first
+    col1, col2 = st.columns(2)
+    image_container_1 = col1.container()
+    image_container_2 = col2.container()
+    slider_container = st.container()
+    legend_container = st.container()
+    
+    # 3. Generate images
     original_array, overlay_array = create_overlay_image(
         image, 
         segmentation, 
@@ -564,36 +628,39 @@ def render_visualization_fragment(image, segmentation, show_mask_overlay):
         alpha=current_alpha
     )
     
-    col1, col2 = st.columns(2)
-    with col1:
-        st.image(original_array, caption='Original Image', width='stretch')
+    # 4. Fill image containers
+    with image_container_1:
+        st.image(original_array, caption='Original Image')
     
-    with col2:
+    with image_container_2:
         caption_img = f'Overlay (α={current_alpha:.1f})' if show_mask_overlay else 'Original'
-        st.image(overlay_array, caption=caption_img, width='stretch')
+        st.image(overlay_array, caption=caption_img)
 
     # 3. Place the Slider UNDER the images
-    if show_mask_overlay:
-        # We don't manually assign a 'value=' here from a variable that changes.
-        # Instead, we let the 'key' manage the state internally.
+
+    # We don't manually assign a 'value=' here from a variable that changes.
+    # Instead, we let the 'key' manage the state internally.
+    with slider_container:
         st.slider(
             "Adjust Mask Transparency", 
             min_value=0.0, 
             max_value=1.0, 
             value=0.5,
             step=0.1,
-            key="mask_slider_key" # Streamlit handles the state sync automatically now
+            key="mask_slider_key",
+            disabled=not show_mask_overlay # Streamlit handles the state sync automatically now
         )
     
     # 4. Legend at the bottom
-    st.markdown("""
-    <div style="text-align: center; margin-top: 1rem;">
-        <span style="background-color: rgba(255, 204, 0, 0.7); padding: 5px 15px; margin: 5px; border-radius: 5px;">🟡 Stroma</span>
-        <span style="background-color: rgba(0, 255, 0, 0.7); padding: 5px 15px; margin: 5px; border-radius: 5px;">🟢 Immune</span>
-        <span style="background-color: rgba(0, 0, 255, 0.7); padding: 5px 15px; margin: 5px; border-radius: 5px; color: white;">🔵 Normal</span>
-        <span style="background-color: rgba(255, 0, 0, 0.7); padding: 5px 15px; margin: 5px; border-radius: 5px; color: white;">🔴 Tumor</span>
-    </div>
-    """, unsafe_allow_html=True)
+    with legend_container:
+        st.markdown("""
+        <div style="text-align: center; margin-top: 1rem;">
+            <span style="background-color: rgba(255, 204, 0, 0.7); padding: 5px 15px; margin: 5px; border-radius: 5px;">🟡 Stroma</span>
+            <span style="background-color: rgba(0, 255, 0, 0.7); padding: 5px 15px; margin: 5px; border-radius: 5px;">🟢 Immune</span>
+            <span style="background-color: rgba(0, 0, 255, 0.7); padding: 5px 15px; margin: 5px; border-radius: 5px; color: white;">🔵 Normal</span>
+            <span style="background-color: rgba(255, 0, 0, 0.7); padding: 5px 15px; margin: 5px; border-radius: 5px; color: white;">🔴 Tumor</span>
+        </div>
+        """, unsafe_allow_html=True)
 
 # ============================================================================
 # MAIN APP (COMPLETE 1:1 REPLACEMENT)
@@ -673,11 +740,12 @@ def main():
     st.markdown("---")
     st.header("📤 Upload Pathology Image")
     uploaded_file = st.file_uploader("Choose image", type=['png', 'jpg', 'jpeg'])
-    st.markdown("""
-                <div style="text-align: center; margin-top: 0.5rem; font-size: 0.9rem;">
-📥 Google drive link for test images: <a href="https://drive.google.com/drive/folders/1Fw4d6-QMPjcXvQkAPhJYpePAl5X9jHzZ?usp=drive_link" target="_blank">Download here</a>
-</div>
-""", unsafe_allow_html=True)
+    if uploaded_file is None:
+        st.markdown("""
+                    <div style="text-align: center; margin-top: 0.5rem; font-size: 0.9rem;">
+    📥 Google drive link for test images: <a href="https://drive.google.com/drive/folders/1Fw4d6-QMPjcXvQkAPhJYpePAl5X9jHzZ?usp=drive_link" target="_blank">Download here</a>
+    </div>
+    """, unsafe_allow_html=True)
     
     if uploaded_file is not None:
         image = Image.open(uploaded_file).convert('RGB')
@@ -722,7 +790,9 @@ def main():
 
             # 2. Fragment Visualization (THE FIX)
             if show_detailed_vis:
+                st.markdown('<div class="image-section-fence">', unsafe_allow_html=True)
                 render_visualization_fragment(st.session_state.uploaded_image, st.session_state.segmentation_result, show_mask_overlay)
+                st.markdown('</div>', unsafe_allow_html=True)
 
             # 3. Caption
             if st.session_state.caption_result:
