@@ -230,9 +230,9 @@ ProjectFolder/
 
 ## 8. 팀 구성 & 역할
 
-- **공통:** 데이터 전처리, 모델 실험 및 성능 분석
-- **손혁재:** 데이터 분석, Streamlit 웹앱 구현, 캡셔닝 모델 성능개선 아이디어 제안 (세그멘테이션 이미지 같이 input해 훈련) 
-- **백기원:** 데이터 전처리 파이프라인 구축, 모델 성능 개선
+- **공통:** 데이터 전처리, 모델 성능 분석
+- **손혁재:** 데이터 분석, Streamlit 웹앱 구현, 캡셔닝 모델 성능개선 아이디어 제안
+- **백기원:** 데이터 전처리 파이프라인 구축, 모델 훈련 및 내용 정리, 모델 성능 개선
 
 
 ---
@@ -259,6 +259,7 @@ ProjectFolder/
   (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71831)
 - **Tools:** PyTorch, Streamlit, Python, OpenCV
 - **References:** Image Captioning with Semantic Attention, Meshed-Memory Transformer
+
 
 
 
