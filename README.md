@@ -8,7 +8,7 @@
 
 ## 0. 한 줄 요약
 
-유방암 현미경 슬라이드 이미지에서 **Image Segmentation**으로 암세포를 시각화하고, **Image Captioning**으로 판독문을 자동 생성하여 의사의 진단을 보조하는 **Streamlit 웹앱**을 구현함.
+유방암 현미경 슬라이드 이미지에서 4개 클래스의 세포를 세그멘테이션하는 동시에 색깔로 구분하고, 자연어 판독문을 자동 생성하여 의사의 진단을 보조하는 서비스를 Streamlit으로 구현함.
 
 ---
 
@@ -248,4 +248,5 @@ ProjectFolder/
   (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71831)
 - **Tools:** PyTorch, Streamlit, Python, OpenCV
 - **References:** Image Captioning with Semantic Attention, Meshed-Memory Transformer
+
 
