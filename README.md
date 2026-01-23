@@ -1,6 +1,6 @@
 # 유방암 현미경 슬라이드 이미지 기반 세그멘테이션 및 판독문 생성
 
-> **팀명:** Stroma(기질세포)
+> **팀명:** Stroma
 > 
 > **프로젝트 기간:** 2025/10/27 ~ 2025/11/03
 > 
@@ -257,6 +257,7 @@ ProjectFolder/
   (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71831)
 - **Tools:** PyTorch, Streamlit, Python, OpenCV
 - **References:** Image Captioning with Semantic Attention, Meshed-Memory Transformer
+
 
 
 
