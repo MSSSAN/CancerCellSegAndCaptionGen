@@ -31,7 +31,13 @@ https://movingface-cancercellsegandcaption.hf.space
 
 - **판독문 생성 예시**
 
-| 암종 분류 | 생성된 판독문 (한국어) |
+| 암종 분류 | 생성된 판독문 |
+|---|---|
+| 침윤암 | Tumor cells infiltrate the stroma in single-file or small clusters, with no normal ducts visible. |
+| 상피내암 | Lobules are expanded with monotonous, discohesive neoplastic cells, with no normal ducts or lobules visible. |
+| 정상 유방조직 | Less than 50% of the tissue is composed of bilayered normal epithelium with intervening stroma. |
+
+| 암종 분류 | 생성된 판독문 (한국어 번역) |
 |---|---|
 | 침윤암 | 드문드문한 종양세포 집단이 치밀하고 섬유화된 간질을 침윤하며, 염증성 침윤은 거의 없다. |
 | 상피내암 | 큰 비정형 세포들이 관을 가득 채우며, 정상적인 관 구조는 보이지 않는다. 치밀한 염증성 침윤이 관찰된다. |
@@ -251,6 +257,7 @@ ProjectFolder/
   (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71831)
 - **Tools:** PyTorch, Streamlit, Python, OpenCV
 - **References:** Image Captioning with Semantic Attention, Meshed-Memory Transformer
+
 
 
 
