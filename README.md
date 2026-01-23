@@ -241,15 +241,13 @@ ProjectFolder/
 
 ### 9-1) 주요 성과
 
-- Segmentation 정보를 활용한 Image Captioning 모델에서 **BLEU-4 48%p 향상** (0.1289 → 0.1911)
-- RGB + Segmentation Map 결합이 단독 입력 대비 우수한 성능 입증
+- Segmentation 정보를 활용한 Image Captioning 모델에서 **BLEU-4 48%p 향상** (0.1289 → 0.1911), RGB + Segmentation Map 결합이 원본 이미지 단독 입력 대비 성능 우수 입증
 - 데이터 로드 최적화를 통한 학습 효율성 개선 (압축파일 로드 방식)
 
 ### 9-2) 기대효과
 
-- **진료 시간 단축:** 판독문 자동 생성으로 의사의 문서 작성 시간 약 15% 단축 가능
 - **진단 정확도 향상:** AI 기반 Segmentation으로 육안 확인 시 놓칠 수 있는 미세 병변 탐지 보조
-- **의료진 업무 부담 경감:** 반복적인 이미지 분석 작업 자동화로 더 많은 환자 진료 가능
+- **의료진 업무 부담 경감, 효율성 증대:** 반복적인 이미지 분석 작업 자동화로 더 많은 환자 진료 가능
 
 ---
 
@@ -259,6 +257,7 @@ ProjectFolder/
   (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71831)
 - **Tools:** PyTorch, Streamlit, Python, OpenCV
 - **References:** Image Captioning with Semantic Attention, Meshed-Memory Transformer
+
 
 
 
