@@ -55,20 +55,20 @@ https://movingface-cancercellsegandcaption.hf.space
 
 ### 2-2) 우리가 한 일
 
-- **Image Segmentation**을 통해 Tumor, Stroma, Normal, Immune 등 조직 영역을 자동으로 구분하고 시각화
-- **Image Captioning**을 통해 병리학적 특징을 담은 자연어 판독문을 자동 생성
-- **Streamlit 웹앱**으로 의료진이 실제 임상에서 활용할 수 있는 프로토타입 제작
+- 세포 클래스별로 세그멘테이션 된 이미지를 원본 이미지와 함께 인풋 데이터로 사용하는 방법으로 캡션 생성 성능 향상
+- 추론시 사용되는 이미지 사이즈를 조절해가며 추론 속도 향상
+- Streamlit 웹앱으로 의료진이 실제 임상에서 활용할 수 있는 프로토타입 제작
 
 ---
 
 ## 3. 데이터셋 & 전처리
 
-### 3-1) 데이터셋 정보
+### 3-1) 데이터셋 출처
 
 - **출처:** AI Hub - 유방암 병리 이미지 및 판독문 합성데이터
 - **링크:** https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71831
 
-### 3-2) 데이터 구성
+### 3-2) 데이터셋 구성
 
 | 대분류 | 수량 | 중분류 | 수량 | 소분류 | 수량 |
 |---|---|---|---|---|---|
@@ -82,15 +82,15 @@ https://movingface-cancercellsegandcaption.hf.space
 |  |  |  |  | 상피내암 | 270 |
 |  |  |  |  | 침윤암 | 270 |
 
-### 3-3) 라벨링 정보
+### 3-3) 데이터셋 정보
 
 - **Segmentation 클래스 (4개):** Tumor, Stroma, Normal, Immune
 - **이미지 정보:** 1024×1024 PNG, MPP 0.5
 - **판독문:** 각 이미지별 병리학적 특징을 담은 자연어 설명
 
-### 3-4) 데이터셋 선정 이유
+### 3-4) 선정 이유
 
-- Segmentation 라벨링과 판독문이 모두 포함되어 다양한 모델 개발에 용이
+- Segmentation 라벨링과 판독문이 모두 포함되어 멀티모달 모델 개발 가능
 - AI Baseline 코드가 제공되어 튜닝에 유리
 - 타 의료용 데이터 대비 많은 양의 데이터 제공 (총 8,000장)
 
@@ -175,7 +175,6 @@ https://movingface-cancercellsegandcaption.hf.space
 #### 2. Image Size의 영향
 - 512×512: 최적 성능 및 속도
 - 1024×1024 (원본 크기): 성능 저하 및 추론 시간 증가
-  - 과도한 해상도로 인한 학습 불안정성 추정
 
 #### 3. Meshed Decoder
 - 모든 실험에서 성능 저하
@@ -229,7 +228,7 @@ ProjectFolder/
 ## 8. 팀 구성 & 역할
 
 - **공통:** 데이터 전처리, 모델 실험 및 성능 분석
-- **손혁재:** 데이터 분석, Streamlit 웹앱 구현
+- **손혁재:** 데이터 분석, Streamlit 웹앱 구현, 캡셔닝 모델 성능개선 아이디어 제안 (세그멘테이션 이미지 같이 input해 훈련) 
 - **백기원:** 데이터 전처리 파이프라인 구축, 모델 성능 개선
 
 
@@ -239,7 +238,7 @@ ProjectFolder/
 
 ### 9-1) 주요 성과
 
-- Segmentation 정보를 활용한 Image Captioning 모델에서 **BLEU-4 48% 향상** (0.1289 → 0.1911)
+- Segmentation 정보를 활용한 Image Captioning 모델에서 **BLEU-4 48%p 향상** (0.1289 → 0.1911)
 - RGB + Segmentation Map 결합이 단독 입력 대비 우수한 성능 입증
 - 데이터 로드 최적화를 통한 학습 효율성 개선 (압축파일 로드 방식)
 
@@ -257,6 +256,7 @@ ProjectFolder/
   (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71831)
 - **Tools:** PyTorch, Streamlit, Python, OpenCV
 - **References:** Image Captioning with Semantic Attention, Meshed-Memory Transformer
+
 
 
 
