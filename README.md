@@ -8,7 +8,7 @@
 
 ## 0. 한 줄 요약
 
-유방암 현미경 슬라이드 이미지에서 **Image Segmentation**으로 암세포를 시각화하고, **Image Captioning**으로 판독문을 자동 생성하여 의사의 진단을 보조하는 **Streamlit 웹앱**을 구현했습니다.
+유방암 현미경 슬라이드 이미지에서 **Image Segmentation**으로 암세포를 시각화하고, **Image Captioning**으로 판독문을 자동 생성하여 의사의 진단을 보조하는 **Streamlit 웹앱**을 구현함.
 
 ---
 
@@ -42,7 +42,6 @@
 
 - **유방암의 높은 발병률:** 2022년 기준 전 세계 여성암 중 유방암이 가장 흔한 암(185개국 중 157개국에서 1위)이며, 신규 환자는 약 229만 명 규모
 - **Medical Imaging AI 시장의 급성장:** 2024년 약 US $1.28 billion → 2034년 약 US $14.46 billion으로 성장 예측 (연평균 성장률 27.1%)
-- **AI 보조 진단의 효율성:** Radiology 영역에서 AI '초안 보고서 생성' 모델 사용 시, 판독 문서 작성 시간이 평균 약 15.5% 단축됨 (예: 189.2초 → 159.8초)
 - **의료진 업무 부담 경감:** 병리 이미지 분석 및 판독문 작성에 소요되는 시간과 노력을 줄여 더 많은 환자를 진료할 수 있게 함
 
 ### 2-2) 우리가 한 일
@@ -177,8 +176,6 @@
 - BLEU-4 기반 보상 함수 사용
 - ROUGE-L 대폭 향상 (0.5376 → 0.6519)
 - BLEU-4는 오히려 하락 (0.1870 → 0.1607)
-- Validation에서 BLEU-4 0.3까지 도달했으나 과적합 발생
-- 강화학습의 가능성은 확인했으나 추가 연구 필요
 
 ---
 
@@ -195,31 +192,27 @@
 
 ## 7. 레포 구조
 ```text
-CELLSEGCAPTIONGEN/
+ProjectFolder/
 ├─ app.py                          # Streamlit 엔트리
-├─ requirements.txt                # 패키지 의존성
-├─ vocab.pkl                       # 판독문 생성용 어휘 사전
+├─ requirements.txt                # 필요 패키지 목록
+├─ vocab.pkl                       # 판독문 토큰화를 위한 단어장
 ├─ decoder.pth                     # Decoder 가중치
 ├─ encoder_4ch.pth                 # Encoder 가중치
 ├─ projection.pth                  # Projection 모듈 가중치
 ├─ gitattributes                   # Git 설정
 │
 ├─ model/
-│  ├─ best_seg_BR_cell.pt          # Segmentation 모델 가중치
-│  └─ best_seg_BR_class.pt         # Classification 모델 가중치
+│  ├─ best_seg_BR_cell.pt          # 세포 세그멘테이션 최적 가중치
+│  └─ best_seg_BR_class.pt         # 클래스 분류 최적 가중치
 │
-├─ pathSegmentation/               # Segmentation 관련 코드
-│  ├─ pathSeg/                     # 데이터 로더 및 전처리
-│  ├─ versionSeg/                  # 학습/평가 스크립트
-│  └─ ...
+├─ pathSegmentation/               # 병리 이미지 세그멘테이션 모듈
+│  ├─ pathSeg/                     # 핵심 알고리즘
+│  ├─ resionSeg/                   # 이미지 영역 분할 및 데이터 로더
+│  └─ UNet/                        # UNet 아키텍처
 │
-├─ UNet/                           # UNet 아키텍처
-│  ├─ Pytorch-UNet-master.zip      # UNet 구현체
-│  └─ unet/                        # UNet 모듈
 │
 └─ utils/                          # 유틸리티 함수
-   ├─ evaluation.py                # 평가 지표 계산
-   └─ __pycache__/                 # Python 캐시
+   └─ evaluation.py                # 평가 지표 계산
 ```
 
 ---
@@ -227,8 +220,9 @@ CELLSEGCAPTIONGEN/
 ## 8. 팀 구성 & 역할
 
 - **공통:** 데이터 전처리, 모델 실험 및 성능 분석
-- **백기원:** 데이터 전처리 파이프라인 구축, 모델 성능 개선
 - **손혁재:** 데이터 분석, Streamlit 웹앱 구현
+- **백기원:** 데이터 전처리 파이프라인 구축, 모델 성능 개선
+
 
 ---
 
@@ -254,3 +248,4 @@ CELLSEGCAPTIONGEN/
   (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71831)
 - **Tools:** PyTorch, Streamlit, Python, OpenCV
 - **References:** Image Captioning with Semantic Attention, Meshed-Memory Transformer
+
