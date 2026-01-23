@@ -16,7 +16,7 @@
 
 ## 1. 데모
 
-### 1-1) 웹앱 (HuggingFace로 호스팅 중이며, 실제로 사용해보실 수 있습니다.)
+### 1-1) 웹앱 (HuggingFace 호스팅 중으로, 실제 사용이 가능합니다.)
 
 https://movingface-cancercellsegandcaption.hf.space
 
@@ -250,6 +250,7 @@ ProjectFolder/
   (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71831)
 - **Tools:** PyTorch, Streamlit, Python, OpenCV
 - **References:** Image Captioning with Semantic Attention, Meshed-Memory Transformer
+
 
 
 
