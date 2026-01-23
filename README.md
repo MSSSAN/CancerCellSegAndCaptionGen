@@ -219,8 +219,11 @@ ProjectFolder/
 │  └─ UNet/                        # UNet 아키텍처
 │
 │
-└─ utils/                          # 유틸리티 함수
-   └─ evaluation.py                # 평가 지표 계산
+├─ utils/                          # 유틸리티 함수
+│  └─ evaluation.py                # 평가 지표 계산
+│
+└─ assets/
+   └─ images/                      # README 이미지
 ```
 
 ---
@@ -256,6 +259,7 @@ ProjectFolder/
   (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71831)
 - **Tools:** PyTorch, Streamlit, Python, OpenCV
 - **References:** Image Captioning with Semantic Attention, Meshed-Memory Transformer
+
 
 
 
