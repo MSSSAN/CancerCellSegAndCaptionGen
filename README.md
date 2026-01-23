@@ -1,7 +1,9 @@
 # 유방암 현미경 슬라이드 이미지 기반 세그멘테이션 및 판독문 생성
 
-> **팀명:** Stroma 
+> **팀명:** Stroma
+> 
 > **프로젝트 기간:** 2025/10/27 ~ 2025/11/03
+> 
 > **주제:** 유방암 병리 이미지의 AI 기반 세그멘테이션 및 자연어 판독문 자동 생성을 통한 의료진 업무 보조 시스템
 
 ---
@@ -248,5 +250,6 @@ ProjectFolder/
   (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71831)
 - **Tools:** PyTorch, Streamlit, Python, OpenCV
 - **References:** Image Captioning with Semantic Attention, Meshed-Memory Transformer
+
 
 
