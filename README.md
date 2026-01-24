@@ -61,9 +61,9 @@ https://movingface-cancercellsegandcaption.hf.space
 
 ### 2-2) 우리가 한 일
 
-- 세포 클래스별로 세그멘테이션 된 이미지를 원본 이미지와 함께 인풋 데이터로 사용하는 방법으로 캡션 생성 성능 향상
-- 추론시 사용되는 이미지 사이즈를 조절해가며 추론 속도 향상
-- Streamlit 웹앱으로 의료진이 실제 임상에서 활용할 수 있는 프로토타입 제작
+- 세포 클래스별로 세그멘테이션 된 이미지를 원본 이미지와 함께 인풋 데이터로 사용해서 AI모델을 재훈련시켜 캡션 생성 성능 약 48%p 향상
+- 추론시 사용되는 이미지 사이즈를 조절하여 추론 속도 향상
+- Streamlit 웹앱으로 기존 AI모델들을 통합하고 사용성을 개선해 의료진이 실제 임상에서 활용할 수 있는 프로토타입 제작
 
 ---
 
@@ -263,6 +263,7 @@ ProjectFolder/
   (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71831)
 - **Tools:** PyTorch, Streamlit, Python, OpenCV
 - **References:** Image Captioning with Semantic Attention, Meshed-Memory Transformer
+
 
 
 
