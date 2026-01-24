@@ -23,7 +23,7 @@ https://movingface-cancercellsegandcaption.hf.space
 
 ### 1-2) 결과 예시
 
-- **원본 이미지 | Segmentation 결과**
+- **원본 이미지 | 세포별 Segmentation 결과**
 
  ![원본](assets/images/segimage1.png) 
  ![원본](assets/images/segimage2.png) 
@@ -257,6 +257,7 @@ ProjectFolder/
   (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71831)
 - **Tools:** PyTorch, Streamlit, Python, OpenCV
 - **References:** Image Captioning with Semantic Attention, Meshed-Memory Transformer
+
 
 
 
