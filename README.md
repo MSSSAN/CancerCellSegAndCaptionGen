@@ -49,7 +49,7 @@ https://movingface-cancercellsegandcaption.hf.space
 
 ### 2-1) 왜 필요한가?
 
-- **유방암의 높은 발병률:** 2022년 기준 전 세계 여성암 중 유방암이 가장 흔한 암(185개국 중 157개국에서 1위)이며, 신규 환자는 약 229만 명 규모
+- **유방암의 높은 발병률:** 유방암은 2022년 기준 세계적으로 여성암중 가장 흔한 암 (185개국 중 157개국에서 1위)이며, 매년 약 229만 명의 신규 환자가 가량 발생
 - **의료진 업무 부담 경감:** 병리 이미지 분석 및 판독문 작성에 소요되는 시간과 노력을 줄여 더 많은 환자를 진료할 수 있게 함
 - **Medical Imaging AI 시장의 급성장:** 2024년 약 US $1.28 billion → 2034년 약 US $14.46 billion으로 성장 예측 (연평균 성장률 27.1%)
 
@@ -257,6 +257,7 @@ ProjectFolder/
   (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71831)
 - **Tools:** PyTorch, Streamlit, Python, OpenCV
 - **References:** Image Captioning with Semantic Attention, Meshed-Memory Transformer
+
 
 
 
