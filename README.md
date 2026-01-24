@@ -53,7 +53,7 @@ https://movingface-cancercellsegandcaption.hf.space
   
 - **진단의 효율성 및 정확성 향상:** AI를 통해 다양한 세포들을 종류별로 구분하고, 자연어 판독문을 같이 제공함으로써 조직검사 이미지를 활용한 의료진의 진단을 보조할 수 있음.
   
-  이로써 의료기관은 다수 환자의 세포검사 결과를 빠른 시간 내에 보다 낮은 비용으로 도출하고, 검사일로부터 진단까지 걸리는 시간을 줄임으로써 필요한 치료를 더 빠른 시간 내에 받는 것을 도울 수 있음.
+  이로써 의료기관은 다수 환자의 세포검사 결과를 빠른 시간 내에 보다 낮은 비용으로 도출하고, 검사일로부터 진단까지 걸리는 시간을 줄여 필요한 치료를 더 빠른 시간 내에 받는 것을 도울 수 있음.
 
   뿐만 아니라, 다양한 의료기관과 의학 전문가로부터 축적된 데이터를 통한 의료적 식견(insight)을 다양한 지역, 기관의 의료진들에게 일관되게 제공함으로써 오진의 가능성을 낮출 수 있음.
 
@@ -263,6 +263,7 @@ ProjectFolder/
   (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71831)
 - **Tools:** PyTorch, Streamlit, Python, OpenCV
 - **References:** Image Captioning with Semantic Attention, Meshed-Memory Transformer
+
 
 
 
