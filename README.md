@@ -61,7 +61,7 @@ https://movingface-cancercellsegandcaption.hf.space
 
 ### 2-2) 우리가 한 일
 
-- 세포 클래스별로 세그멘테이션 된 이미지를 원본 이미지와 함께 인풋 데이터로 사용해서 AI모델을 재훈련시켜 캡션 생성 성능 약 48%p 향상
+- 세포 클래스별로 세그멘테이션 된 이미지를 원본 이미지와 함께 인풋 데이터로 사용해서 AI모델을 재훈련시켜 판독문 생성 성능 약 48% 향상
 - 추론시 사용되는 이미지 사이즈를 조절하여 추론 속도 향상
 - Streamlit 웹앱으로 기존 AI모델들을 통합하고 사용성을 개선해 의료진이 실제 임상에서 활용할 수 있는 프로토타입 제작
 
@@ -247,7 +247,7 @@ ProjectFolder/
 
 ### 9-1) 주요 성과
 
-- Segmentation 정보를 활용한 Image Captioning 모델에서 **BLEU-4 48%p 향상** (0.1289 → 0.1911), RGB + Segmentation Map 결합이 원본 이미지 단독 입력 대비 성능 우수 입증
+- Segmentation 정보를 활용한 Image Captioning 모델에서 **BLEU-4 48% 향상** (0.1289 → 0.1911), RGB + Segmentation Map 결합이 원본 이미지 단독 입력 대비 성능 우수 입증
 - 데이터 로드 최적화를 통한 학습 효율성 개선 (압축파일 로드 방식)
 
 ### 9-2) 기대효과
@@ -263,6 +263,7 @@ ProjectFolder/
   (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71831)
 - **Tools:** PyTorch, Streamlit, Python, OpenCV
 - **References:** Image Captioning with Semantic Attention, Meshed-Memory Transformer
+
 
 
 
