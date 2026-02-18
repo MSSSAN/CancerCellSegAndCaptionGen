@@ -56,8 +56,7 @@ https://movingface-cancercellsegandcaption.hf.space
   이로써 의료기관은 다수 환자의 세포검사 결과를 빠른 시간 내에 보다 낮은 비용으로 도출하고, 검사일로부터 진단까지 걸리는 시간을 줄여 필요한 치료를 더 빠른 시간 내에 받는 것을 도울 수 있음.
 
   뿐만 아니라, 다수의 의료기관과 의학 전문가로부터 축적된 데이터를 통한 의료적 식견(insight)을 다양한 지역, 기관의 의료진들에게 일관되게 제공함으로써 오진의 가능성을 낮출 수 있음.
-
-- **시장의 급성장:** 위와 같은 이유에 따라, AI Medical Imaging 시장은 2024년 약 $1.28 US Billion → 2034년 약 $14.46 US billion (연평균 성장률 27.1%) 규모로 성장이 예측되는 유망한 분야. 
+  
 
 ### 2-2) 우리가 한 일
 
@@ -237,8 +236,8 @@ ProjectFolder/
 ## 8. 팀 구성 & 역할
 
 - **공통:** 데이터 전처리, 모델 성능 분석
-- **손혁재:** 데이터 분석, Streamlit 웹앱 구현, 캡셔닝 모델 성능개선 아이디어 제안
-- **백기원:** 데이터 전처리 파이프라인 구축, 모델 훈련 및 내용 정리, 모델 성능 개선
+- **손혁재:** 데이터 분석, Streamlit 웹앱 구현, 세포 classification 데이터 사용을 통한 캡셔닝 모델 성능개선 아이디어 제안
+- **백기원:** 데이터 전처리 파이프라인 구축, 모델 훈련 및 내용 정리, 캡셔닝 모델 성능개선 아이디어 제안에 따른 성능 개선
 
 
 ---
@@ -263,6 +262,7 @@ ProjectFolder/
   (https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71831)
 - **Tools:** PyTorch, Streamlit, Python, OpenCV
 - **References:** Image Captioning with Semantic Attention, Meshed-Memory Transformer
+
 
 
 
