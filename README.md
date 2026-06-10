@@ -26,7 +26,7 @@ https://movingface-cancercellsegandcaption.hf.space
 
 ### 1-2) 결과 예시
 
-- **원본 이미지 | 세포별 Segmentation 결과**
+- **원본 이미지  |  세포별 세그멘테이션 마스크 생성 결과**
 
  ![원본](assets/images/segimage1.png) 
  ![원본](assets/images/segimage2.png) 
