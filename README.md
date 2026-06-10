@@ -32,7 +32,7 @@ https://movingface-cancercellsegandcaption.hf.space
  ![원본](assets/images/segimage2.png) 
  ![원본](assets/images/segimage3.png) 
 
-- **판독문 생성 예시**
+- **이미지에 따른 의학적 판독문의 예시**
 
 | 암종 분류 | 생성된 판독문 |
 |---|---|
